@@ -1,0 +1,1 @@
+cmake --build build && ./bin/observable_test
