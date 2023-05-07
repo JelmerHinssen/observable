@@ -7,6 +7,8 @@
 #include <type_traits>
 #include <unordered_set>
 
+namespace observable {
+
 class GeneralListener;
 class ListenerOwner;
 
@@ -123,8 +125,9 @@ private:
     Event<Args...>& event;
 };
 
-#define EVENT(name, ...) Event<__VA_ARGS__> name;\
-    public: inline EventListeners<__VA_ARGS__> name ## Listeners(){\
-        return EventListeners<__VA_ARGS__>(name);}\
+}
+#define EVENT(name, ...) observable::Event<__VA_ARGS__> name;\
+    public: inline observable::EventListeners<__VA_ARGS__> name ## Listeners(){\
+        return observable::EventListeners<__VA_ARGS__>(name);}\
     private:
 
